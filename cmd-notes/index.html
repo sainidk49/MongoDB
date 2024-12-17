@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        async function getData() {
+            let jsonData = await fetch('https://dummyjson.com/users')
+                .then(res => res.json());
+
+            // Assuming the users are inside the 'users' property
+            let userData = jsonData.users.map((user) => ({
+                firstName: user.firstName,
+                age: user.age,
+                gender: user.gender,
+                phone: user.phone,
+                email: user.email,
+                birthDate: user.birthDate
+            }));
+
+            console.log(userData);
+
+
+        }
+        getData();
+
+    </script>
+</body>
+
+</html>
